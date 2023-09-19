@@ -26,7 +26,7 @@
                             <div class="col-span-full">
                             <x-input.group for="upload" label="File Upload" error="fileUpload">
                                 @unless ($fileUpload)
-                                <x-input.file-upload label="Upload a file">
+                                <x-input.file-upload label="Upload a file" for="file-upload">
                                     <input id="file-upload" name="file-upload" type="file" wire:model="fileUpload" class="sr-only">
                                 </x-input.file-upload>
                                 @else

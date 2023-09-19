@@ -19,7 +19,7 @@
                             <div class="col-span-full">
                                 <x-input.group for="logo_upload" label="Hero Card Upload" error="logo">
                                     @unless ($logo)
-                                    <x-input.file-upload label="Upload a file">
+                                    <x-input.file-upload label="Upload a file" for="logo_upload">
                                         <input id="logo_upload" name="logo_upload" type="file" wire:model="logo" class="sr-only">
                                     </x-input.file-upload>
                                     @else
@@ -50,7 +50,7 @@
                                 <p class="mb-4 text-sm font-medium leading-6 text-white">Attach a Logo to the Hero Card</p>
                                 <x-input.group for="hero_card" label="Hero Card Upload" error="heroCard">
                                     @unless ($heroCard)
-                                    <x-input.file-upload label="Upload a file">
+                                    <x-input.file-upload label="Upload a file" for="hero_card">
                                         <input id="hero_card" name="hero_card" type="file" wire:model="heroCard" class="sr-only">
                                     </x-input.file-upload>
                                     @else
