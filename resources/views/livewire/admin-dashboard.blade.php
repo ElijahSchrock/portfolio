@@ -26,7 +26,9 @@
                             <div class="col-span-full">
                             <x-input.group for="upload" label="File Upload" error="fileUpload">
                                 @unless ($fileUpload)
-                                <x-input.file-upload label="Upload a file" />
+                                <x-input.file-upload label="Upload a file">
+                                    <input id="file-upload" name="file-upload" type="file" wire:model="fileUpload" class="sr-only">
+                                </x-input.file-upload>
                                 @else
                                 <div class="space-y-4" wire:loading.class="opacity-25" wire:loading.attr="disabled">
                                     <div class="text-sm font-bold text-slate-300 space-y-2 p-3 rounded-md bg-slate-800 border border-slate-700 shadow-sm">
@@ -50,16 +52,6 @@
                     </div>
                 </div>
 
-                @if ($errors->any())
-                    <div class="alert alert-danger">
-                        <ul>
-                            @foreach ($errors->all() as $error)
-                                <li>{{ $error }}</li>
-                            @endforeach
-                        </ul>
-                    </div>
-                @endif
-        
                 <div class="mt-6 flex items-center justify-end gap-x-6">
                     <button type="button" class="text-sm font-semibold leading-6 text-white">Cancel</button>
                     <button type="submit" class="rounded-md bg-indigo-500 px-3 py-2 text-sm font-semibold text-white shadow-sm hover:bg-indigo-400 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-500">Save</button>

@@ -18,6 +18,9 @@
                     <x-nav-link href="{{ route('projects') }}" :active="request()->routeIs('projects')">
                         {{ __('Projects') }}
                     </x-nav-link>
+                    <x-nav-link href="{{ route('hero-cards') }}" :active="request()->routeIs('hero-cards')">
+                        {{ __('Hero Cards') }}
+                    </x-nav-link>
                 </div>
             </div>
 
@@ -95,6 +98,9 @@
             </x-responsive-nav-link>
             <x-responsive-nav-link href="{{ route('projects') }}" :active="request()->routeIs('projects')">
                 {{ __('Projects') }}
+            </x-responsive-nav-link>
+            <x-responsive-nav-link href="{{ route('hero-cards') }}" :active="request()->routeIs('hero-cards')">
+                {{ __('Hero Cards') }}
             </x-responsive-nav-link>
         </div>
 

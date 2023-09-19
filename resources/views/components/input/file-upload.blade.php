@@ -10,7 +10,7 @@
         <div class="mt-4 flex text-sm leading-6 text-gray-400">
             <label for="file-upload" class="relative cursor-pointer rounded-md bg-gray-900 font-semibold text-white focus-within:outline-none focus-within:ring-0  focus-within:ring-offset-gray-900 hover:text-slate-500">
                 <span>{{ $label }}</span>
-                <input id="file-upload" name="file-upload" type="file" wire:model="fileUpload" class="sr-only">
+                {{ $slot }}
             </label>
             <p class="pl-1">or drag and drop</p>
         </div>
