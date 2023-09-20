@@ -35,7 +35,7 @@
                                         {{-- @foreach($uploads as $file) --}}
                                         <div class="flex justify-between">
                                             <div>{{ $fileUpload->getClientOriginalName() }}</div>
-                                            <button class="flex items-center space-x-2 text-gray-400 hover:text-slate-500 text-sm leading-5 font-medium focus:outline-none focus:underline transition duration-150 ease-in-out" wire:click="removeFile">
+                                            <button type="button" class="flex items-center space-x-2 text-gray-400 hover:text-slate-500 text-sm leading-5 font-medium focus:outline-none focus:underline transition duration-150 ease-in-out" wire:click="removeFile">
                                             <x-dynamic-component component="fas-trash-can" class="h-4 w-4" />
                                             Remove File
                                         </button>

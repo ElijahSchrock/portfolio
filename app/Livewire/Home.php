@@ -4,6 +4,7 @@ namespace App\Livewire;
 
 use App\Models\Project;
 use Livewire\Component;
+use App\Models\HeroCard;
 
 class Home extends Component
 {
@@ -16,11 +17,21 @@ class Home extends Component
             return Project::get();
         });
     }
+
+    public function getHeroCardsProperty()
+    {
+        $cacheKey = 'hero-'.$this->__id;
+
+        return cache()->remember($cacheKey, 120, function () {
+            return HeroCard::get();
+        });
+    }
     
     public function render()
     {
         return view('livewire.home',[
-            'projects' => $this->projects
+            'projects' => $this->projects,
+            'heroCards' => $this->heroCards
         ]);
     }
 }
