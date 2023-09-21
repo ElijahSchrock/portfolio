@@ -10,17 +10,9 @@ class HeroCardsList extends Component
 {
     use WithFileUploads;
     use CanToast;
-    
-    public $heroCard;
-    public $logo;
-    public $description;
 
-    protected $rules = [
-        'description' => 'required'
-    ];
-
-    protected $validationAttributes = [
-        'description' => 'description'
+    protected $listeners = [
+        'refreshHeroCards' => 'onRefreshHeroCards'
     ];
 
     public function getHeroCardsProperty()
@@ -32,6 +24,11 @@ class HeroCardsList extends Component
         });
     }
 
+    public function onRefreshHeroCards()
+    {
+        cache()->forget('heroCard-'.$this->__id);
+    }
+
     public function render()
     {
         return view('livewire.hero-cards-list',[
@@ -39,35 +36,10 @@ class HeroCardsList extends Component
         ]);
     }
 
-    public function removeFile($toRemove)
+    public function deleteCard(HeroCard $heroCard)
     {
-        if ($toRemove == 'logo') {
-            $this->logo = null;
-        } else {
-            $this->heroCard = null;
-        }
-    }
+        $heroCard->delete();
 
-    public function save()
-    {
-        $this->validate();
-
-        $hero = HeroCard::create([
-            'description' => $this->description
-        ]);
-
-        $hero->addMedia($this->heroCard->path())
-            ->usingName($this->heroCard->getClientOriginalName())
-            ->usingFileName($this->heroCard->getClientOriginalName())
-            ->toMediaCollectionOnCloudDisk('heroCard');
-
-        $hero->addMedia($this->logo->path())
-            ->usingName($this->logo->getClientOriginalName())
-            ->usingFileName($this->logo->getClientOriginalName())
-            ->toMediaCollectionOnCloudDisk('logo');
-
-        $this->reset();
-
-        return $this->toast('Hero Card Created Successfully!', type:'success');
+        $this->dispatch('refreshHeroCards');
     }
 }

@@ -10,27 +10,21 @@ class EditProject extends ModalComponent
     use CanToast;
 
     public Project $project;
-    public $name;
-    public $description;
-    public $showing = true;
 
     protected $rules = [
-        'name' => 'required',
-        'description' => 'required',
-        'showing' => 'boolean'
+        'project.name' => 'required',
+        'project.description' => 'required',
+        'project.showing' => 'boolean'
     ];
 
     protected $validationAttributes = [
-        'name' => 'name',
-        'description' => 'description'
+        'project.name' => 'name',
+        'project.description' => 'description'
     ];
 
     public function mount(Project $project)
     {
         $this->project = $project;
-        $this->name = $project->name;
-        $this->description = $project->description;
-        $this->showing = $project->showing;
     }
 
     public function render()
@@ -43,9 +37,9 @@ class EditProject extends ModalComponent
         $this->validate();
 
         $this->project->update([
-            'name' => $this->name,
-            'description' => $this->description,
-            'showing' => $this->showing
+            'name' => $this->project->name,
+            'description' => $this->project->description,
+            'showing' => $this->project->showing
         ]);
 
         $this->toast('Project updated successfully!', type: 'success');

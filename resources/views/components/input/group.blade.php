@@ -4,7 +4,10 @@
     'error' => false,
     'helpText' => false,
     'inline' => false,
-    'required' => false
+    'required' => false,
+    'editable' => false,
+    'editLabel' => '',
+    'editAction' => ''
 ])
 
 @if($inline)
@@ -34,7 +37,12 @@
     
     <div>
         <div class="flex justify-between group">
-            <label for="{{ $for }}" class="block text-sm font-medium leading-6 text-gray-700 dark:text-gray-200 @if($required) after:content-['*'] after:ml-0.5 after:text-red-500 @endif">{{ $label }}</label>
+            <label for="{{ $for }}" class="flex text-sm font-medium leading-6 text-gray-700 dark:text-gray-200 @if($required) after:content-['*'] after:ml-0.5 after:text-red-500 @endif">
+                {{ $label }}
+                @if($editable)
+                    <span class="text-sm text-red-700 hover:cursor-pointer ml-3 font-medium leading-6" wire:click="{{ $editAction }}">{{ $editLabel }}</span>
+                @endif
+            </label>
             @isset($labelButton)
                 {{ $labelButton }}
             @endisset
