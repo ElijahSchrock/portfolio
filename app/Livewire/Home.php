@@ -12,6 +12,7 @@ class Home extends Component
     public function getProjectsProperty()
     {
         $cacheKey = 'project-'.$this->__id;
+        return [];
 
         return cache()->remember($cacheKey, 120, function () {
             return Project::get();

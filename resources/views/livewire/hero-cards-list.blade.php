@@ -11,7 +11,6 @@
         <x-slot name="head">
             <x-table.heading>Banner</x-table.heading>
             <x-table.heading>Logo</x-table.heading>
-            <x-table.heading class="hidden sm:table-cell">Description</x-table.heading>
             <x-table.heading>Order</x-table.heading>
             <x-table.heading></x-table.heading>
         </x-slot>
@@ -26,7 +25,6 @@
                         <x-table.cell>
                             <img class="w-32" src="{{ $heroCard->getFirstMedia('logo')?->getURL() ?? null }}"/>
                         </x-table.cell>
-                        <x-table.cell class="hidden sm:table-cell">{{ $heroCard->description }}</x-table.cell>
                         <x-table.cell >{{ $heroCard->order }}</x-table.cell>
                         <x-table.cell-edit action="$dispatch('openModal', { component: 'edit-hero-card', arguments: { heroCard: {{ $heroCard->id }} }})"/>
                         <x-table.cell-delete action="deleteCard({{ $heroCard->id }})"/>

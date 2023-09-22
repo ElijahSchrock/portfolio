@@ -62,19 +62,27 @@
                     
                     {{-- cards --}}
                     <div class="mx-auto max-w-8xl px-4 pb-16 sm:px-6 sm:pb-16 lg:max-w-10xl lg:px-8">
-                        <h2 class="text-2xl font-bold tracking-tight text-white">Customers also purchased</h2>
+                        <h2 class="text-xl font-bold tracking-tight text-white">New Releases</h2>
 
                         <!-- Project Cards -->
                         <div class="flex flex-col m-auto p-auto">
                             <div class="flex overflow-x-scroll pb-10 hide-scroll-bar">
                                 <div class="flex flex-nowrap">
-                                    @foreach($projects as $project)
-                                        <div class="inline-block {{ $loop->last ? '' : 'pr-8'}}">
+                                    @if(count($projects) > 0)
+                                        @foreach($projects as $project)
+                                            <div class="inline-block {{ $loop->last ? '' : 'pr-8'}}">
+                                                <div class="w-64 h-80 max-w-xs overflow-hidden rounded-lg shadow-md dark:bg-black hover:shadow-xl transition-shadow duration-300 ease-in-out">
+                                                    <img src="{{ $project->getFirstMedia('images')?->getURL() ?? null }}"/>
+                                                </div>
+                                            </div>
+                                        @endforeach
+                                    @else
+                                        <div class="inline-block">
                                             <div class="w-64 h-80 max-w-xs overflow-hidden rounded-lg shadow-md dark:bg-black hover:shadow-xl transition-shadow duration-300 ease-in-out">
-                                                <img src="{{ $project->getFirstMedia('images')?->getURL() ?? null }}"/>
+                                                <img src="coming_soon_card.JPEG"/>
                                             </div>
                                         </div>
-                                    @endforeach
+                                    @endif
                                 </div>
                             </div>
                         </div>
@@ -115,7 +123,7 @@
                                     <div class="inline-block">
                                         <a href="https://www.google.com/maps/place/Las+Vegas,+NV/@36.1248871,-115.339809,11z/data=!3m1!4b1!4m6!3m5!1s0x80beb782a4f57dd1:0x3accd5e6d5b379a3!8m2!3d36.171563!4d-115.1391009!16zL20vMGN2M3c?entry=ttu" target="_blank">
                                             <div class="w-80 overflow-hidden rounded-lg shadow-md dark:bg-black hover:shadow-xl transition-shadow duration-300 ease-in-out">
-                                                <img src="/address.png"/>
+                                                <img src="/location.png"/>
                                             </div>
                                         </a>
                                     </div>
