@@ -14,8 +14,21 @@
     @vite(['resources/css/app.css', 'resources/js/app.js'])
 
 </head>
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-EK261GEYX1"></script>
+<script>
+    window.dataLayer = window.dataLayer || [];
+
+    function gtag() {
+        dataLayer.push(arguments);
+    }
+    gtag('js', new Date());
+
+    gtag('config', 'G-EK261GEYX1');
+
+</script>
 <body class="antialiased">
-<livewire:home />
+    <livewire:home />
 
 </body>
 </html>

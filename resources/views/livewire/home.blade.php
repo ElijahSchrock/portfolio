@@ -61,7 +61,7 @@
                     <livewire:carousel :heroCards="$heroCards"/>
                     
                     {{-- cards --}}
-                    <div class="mx-auto max-w-8xl px-4 py-16 sm:px-6 sm:py-16 lg:max-w-10xl lg:px-8">
+                    <div class="mx-auto max-w-8xl px-4 pb-16 sm:px-6 sm:pb-16 lg:max-w-10xl lg:px-8">
                         <h2 class="text-2xl font-bold tracking-tight text-white">Customers also purchased</h2>
 
                         <!-- Project Cards -->
