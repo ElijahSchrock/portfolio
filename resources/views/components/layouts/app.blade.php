@@ -7,7 +7,7 @@
 
         <title>Elijah Schrock</title>
 
-        <link rel="icon" href="/favicon.png" type="image/x-icon"/>
+        <link rel="icon" href="/favicon.ico" type="image/x-icon"/>
 
         <!-- Fonts -->
         <link rel="preconnect" href="https://fonts.bunny.net">
