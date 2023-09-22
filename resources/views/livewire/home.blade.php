@@ -62,7 +62,7 @@
                     
                     {{-- cards --}}
                     <div class="mx-auto max-w-8xl px-4 pb-16 sm:px-6 sm:pb-16 lg:max-w-10xl lg:px-8">
-                        <h2 class="text-xl font-bold tracking-tight text-white">New Releases</h2>
+                        {{-- <h2 class="text-xl font-bold tracking-tight text-white">New Releases</h2> --}}
 
                         <!-- Project Cards -->
                         <div class="flex flex-col m-auto p-auto">

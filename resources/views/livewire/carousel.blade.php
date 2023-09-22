@@ -6,7 +6,7 @@
                     <div class="w-full {{ $activeIndex === $key ? 'block' : 'hidden' }}">
                         <div class="relative isolate bg-no-repeat bg-cover bg-center bg-transparent" style="background-image: url({{ $heroCard->getFirstMedia('heroCard')?->getURL() ?? null }})">
                             <div class="absolute w-full h-full bg-gradient-to-l from-transparent to-black -z-50"></div>
-                            <div class="absolute w-full h-full bg-gradient-to-b from-transparent via-transparent to-black -z-50"></div>
+                            <div class="absolute bottom-0 w-full h-1/4 bg-gradient-to-b from-transparent via-transparent to-[#151514] to-100% -z-50"></div>
                             <div class="mx-auto px-6 lg:flex lg:items-center lg:gap-x-10 lg:px-8 relative">
                                 <div class="mx-auto max-w-2xl lg:mx-0 lg:flex-auto">
                                     <img src="{{ $heroCard->getFirstMedia('logo')?->getURL() ?? null }}" />
@@ -22,6 +22,7 @@
                                     </div>
                                 </div>
                             </div>
+                            <h2 class="text-xl font-bold tracking-tight text-white ml-8">New Releases</h2>
                         </div>
                     </div>
                 @endforeach
@@ -45,6 +46,7 @@
                                 </div>
                             </div>
                         </div>
+                        <h2 class="text-xl font-bold tracking-tight text-white ml-8">New Releases</h2>
                     </div>
                 </div>
             @endif
