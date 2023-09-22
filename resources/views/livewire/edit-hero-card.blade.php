@@ -29,11 +29,6 @@
                     </x-input.group>
                     @endif
                 </div>
-                <div class="col-span-full">
-                    <x-input.group for="card_description" label="Description" error="heroCard.description">
-                        <x-input.text wire:model="heroCard.description" id="card_description" placeholder="" />
-                    </x-input.group>
-                </div>
 
                 <div class="col-span-4">
                     <x-input.group for="card_order" label="Order" error="heroCard.order">

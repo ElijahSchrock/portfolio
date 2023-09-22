@@ -21,12 +21,10 @@ class EditHeroCard extends ModalComponent
     ];
 
     protected $rules = [
-        'heroCard.description' => 'required|string|min:3',
         'heroCard.order' => 'required|integer'
     ];
 
     protected $validationAttributes = [
-        'heroCard.description' => 'description',
         'heroCard.order' => 'order'
     ];
     
@@ -37,7 +35,6 @@ class EditHeroCard extends ModalComponent
         if (! $this->heroCard->getKey())
         {
             $this->heroCard = HeroCard::create([
-                'description' => '',
                 'order' => 0
             ]);
         }
@@ -81,7 +78,6 @@ class EditHeroCard extends ModalComponent
         $this->validate();
 
         $this->heroCard->update([
-            'description' => $this->heroCard->description,
             'order' => $this->heroCard->order
         ]);
 
