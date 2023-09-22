@@ -15,15 +15,24 @@ class AdminDashboard extends Component
     public $name;
     public $description;
     public $fileUpload;
+    public $techStack;
+    public $otherTech;
+    public $yearCreated;
 
     protected $rules = [
         'name' => 'required',
-        'description' => 'required'
+        'description' => 'required',
+        'techStack' => 'required',
+        'otherTech' => 'required',
+        'yearCreated' => 'required',
     ];
 
     protected $validationAttributes = [
         'name' => 'name',
-        'description' => 'description'
+        'description' => 'description',
+        'techStack' => 'tech stack',
+        'otherTech' => 'other tech',
+        'yearCreated' => 'year created',
     ];
 
     public function render()
@@ -50,7 +59,10 @@ class AdminDashboard extends Component
 
         $project = Project::create([
             'name' => $this->name,
-            'description' => $this->description
+            'description' => $this->description,
+            'tech_stack' => $this->techStack,
+            'other_tech' => $this->otherTech,
+            'year_created' => $this->yearCreated,
         ]);
 
         $project->addMedia($this->fileUpload->path())
@@ -58,7 +70,7 @@ class AdminDashboard extends Component
             ->usingFileName($this->fileUpload->getClientOriginalName())
             ->toMediaCollectionOnCloudDisk('images');
 
-        $this->reset(['name', 'description', 'fileUpload']);
+        $this->reset();
 
         return $this->toast('Project Uploaded', type: 'success');
     }

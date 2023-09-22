@@ -22,6 +22,21 @@
                                     <x-input.textarea wire:model="description" id="description" rows="3" placeholder="Enter Project Description"/>
                                 </x-input.group>
                             </div>
+                            <div class="col-span-2">
+                                <x-input.group for="tech_stack" label="Tech Stack" error="techStack">
+                                    <x-input.text wire:model="techStack" id="tech_stack"/>
+                                </x-input.group>
+                            </div>
+                            <div class="col-start-3 col-span-2">
+                                <x-input.group for="other_tech" label="Other Tech" error="otherTech">
+                                    <x-input.text wire:model="otherTech" id="other_tech" />
+                                </x-input.group>
+                            </div>
+                            <div class="col-start-5 col-span-2">
+                                <x-input.group for="year_created" label="Year Created" error="yearCreated">
+                                    <x-input.text wire:model="yearCreated" id="year_created"/>
+                                </x-input.group>
+                            </div>
         
                             <div class="col-span-full">
                             <x-input.group for="upload" label="File Upload" error="fileUpload">
