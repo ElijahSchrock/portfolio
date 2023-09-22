@@ -2,9 +2,10 @@
 
 namespace App\Livewire;
 
+use App\Models\Project;
 use App\Models\HeroCard;
-use LivewireUI\Modal\ModalComponent;
 use Livewire\WithFileUploads;
+use LivewireUI\Modal\ModalComponent;
 
 class EditHeroCard extends ModalComponent
 {
@@ -21,11 +22,13 @@ class EditHeroCard extends ModalComponent
     ];
 
     protected $rules = [
-        'heroCard.order' => 'required|integer'
+        'heroCard.order' => 'required|integer',
+        'heroCard.project_id' => ''
     ];
 
     protected $validationAttributes = [
-        'heroCard.order' => 'order'
+        'heroCard.order' => 'order',
+        'heroCard.project_id' => 'project'
     ];
     
     public function mount(HeroCard $heroCard)
@@ -40,9 +43,16 @@ class EditHeroCard extends ModalComponent
         }
     }
 
+    public function getProjectsProperty()
+    {
+        return Project::get();
+    }
+
     public function render()
     {
-        return view('livewire.edit-hero-card');
+        return view('livewire.edit-hero-card',[
+            'projects' => $this->projects
+        ]);
     }
 
     public function editImage($value)
@@ -78,7 +88,8 @@ class EditHeroCard extends ModalComponent
         $this->validate();
 
         $this->heroCard->update([
-            'order' => $this->heroCard->order
+            'order' => $this->heroCard->order,
+            'project_id' => $this->heroCard->project_id
         ]);
 
         $this->closeModalWithEvents([
@@ -86,5 +97,11 @@ class EditHeroCard extends ModalComponent
         ]);
 
         return $this->toast('Hero card updated successfully!', type: 'success');
+    }
+
+
+    public static function modalMaxWidth(): string
+    {
+        return 'md';
     }
 }

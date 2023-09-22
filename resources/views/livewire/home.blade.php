@@ -1,7 +1,7 @@
     <div>
         <div class="bg-[#151514]" x-data="{ open: false }" x-cloak>
             {{-- <header> --}}
-                <nav class="bg-[#151514] mx-auto flex max-w-10xl items-center justify-between lg:justify-start p-6 lg:px-8 sticky top-0 z-50" aria-label="Global">
+                <nav class="bg-[#151514] mx-auto flex max-w-10xl items-center justify-between lg:justify-start p-6 lg:px-8 sticky top-0 z-10" aria-label="Global">
                     <a href="#" class="-m-1.5 p-1.5 mr-5">
                         <span class="sr-only">Elijah Schrock</span>
                         <img class="h-6 w-auto" src="/the_logo.png" alt="">
@@ -15,11 +15,11 @@
                         </button>
                     </div>
                     <div class="hidden lg:flex lg:gap-x-12">
-                        <a href="#" class="text-sm font-semibold leading-6 text-gray-900 dark:text-slate-300">Product</a>
-                        <a href="#" class="text-sm font-semibold leading-6 text-gray-900 dark:text-slate-300">Features</a>
-                        <a href="{{ route('register') }}" class="text-sm font-semibold leading-6 text-gray-900 dark:text-slate-300">Register</a>
+                        <a href="#" class="text-sm font-semibold leading-6 text-gray-900 dark:text-slate-300">Resume</a>
+                        <a href="#" class="text-sm font-semibold leading-6 text-gray-900 dark:text-slate-300">Contact</a>
+                        <a href="{{ route('register') }}" class="text-sm font-semibold leading-6 text-gray-900 dark:text-slate-300">About</a>
 
-                        <a href="{{ route('login') }}"" class=" text-sm font-semibold leading-6 text-gray-900 dark:text-slate-300">Log in <span aria-hidden="true">&rarr;</span></a>
+                        {{-- <a href="{{ route('login') }}"" class=" text-sm font-semibold leading-6 text-gray-900 dark:text-slate-300">Log in <span aria-hidden="true">&rarr;</span></a> --}}
                     </div>
                 </nav>
                 <!-- Mobile menu, show/hide based on menu open state. -->
@@ -71,14 +71,14 @@
                                     @if(count($projects) > 0)
                                         @foreach($projects as $project)
                                             <div class="inline-block {{ $loop->last ? '' : 'pr-8'}}">
-                                                <div class="w-64 h-80 max-w-xs overflow-hidden rounded-lg shadow-md dark:bg-black hover:shadow-xl transition-shadow duration-300 ease-in-out">
+                                                <div class="w-48 h-60 sm:w-64 sm:h-80 max-w-xs overflow-hidden rounded-lg shadow-md dark:bg-black hover:shadow-xl transition-shadow duration-300 ease-in-out">
                                                     <img src="{{ $project->getFirstMedia('images')?->getURL() ?? null }}"/>
                                                 </div>
                                             </div>
                                         @endforeach
                                     @else
                                         <div class="inline-block">
-                                            <div class="w-64 h-80 max-w-xs overflow-hidden rounded-lg shadow-md dark:bg-black hover:shadow-xl transition-shadow duration-300 ease-in-out">
+                                            <div class="w-48 h-60 sm:w-64 sm:h-80 max-w-xs overflow-hidden rounded-lg shadow-md dark:bg-black hover:shadow-xl transition-shadow duration-300 ease-in-out">
                                                 <img src="coming_soon_card.JPEG"/>
                                             </div>
                                         </div>
@@ -87,42 +87,42 @@
                             </div>
                         </div>
 
-                        <h2 class="text-2xl font-bold tracking-tight text-white">Contact me stuff</h2>
+                        <h2 class="text-xl font-bold tracking-tight text-white">Trending Now</h2>
                         <!-- Contact Stuff -->
                         <div class="flex flex-col m-auto p-auto">
                             <div class="flex overflow-x-scroll pb-10 hide-scroll-bar">
                                 <div class="flex flex-nowrap">
-                                    <div class="inline-block pr-10">
+                                    <div class="inline-block pr-5 sm:pr-10">
                                         <a href="mailTo:etelles98@gmail.com"> 
-                                            <div class="w-80 overflow-hidden rounded-lg shadow-md dark:bg-black hover:shadow-xl transition-shadow duration-300 ease-in-out">
+                                            <div class="w-48 sm:w-80 overflow-hidden rounded-lg shadow-md dark:bg-black hover:shadow-xl transition-shadow duration-300 ease-in-out">
                                                 <img src="/email.png"/>
                                             </div>
                                         </a>
                                     </div>
-                                    <div class="inline-block pr-10">
+                                    <div class="inline-block pr-5 sm:pr-10">
                                         <a href="tel:702-752-2318">
-                                            <div class="w-80 overflow-hidden rounded-lg shadow-md dark:bg-black hover:shadow-xl transition-shadow duration-300 ease-in-out">
+                                            <div class="w-48 sm:w-80 overflow-hidden rounded-lg shadow-md dark:bg-black hover:shadow-xl transition-shadow duration-300 ease-in-out">
                                                 <img src="/phone.png"/>
                                             </div>
                                         </a>
                                     </div>
-                                    <div class="inline-block pr-10">
+                                    <div class="inline-block pr-5 sm:pr-10">
                                         <a href="https://www.linkedin.com/in/elijah-schrock/" target="_blank">
-                                            <div class="w-80 overflow-hidden rounded-lg shadow-md dark:bg-black hover:shadow-xl transition-shadow duration-300 ease-in-out">
+                                            <div class="w-48 sm:w-80 overflow-hidden rounded-lg shadow-md dark:bg-black hover:shadow-xl transition-shadow duration-300 ease-in-out">
                                                 <img src="/linkedin.png"/>
                                             </div>
                                         </a>
                                     </div>
-                                    <div class="inline-block pr-10">
-                                        <a href="https://github.com/elijahschrock" target="_blank">
-                                            <div class="w-80 overflow-hidden rounded-lg shadow-md dark:bg-black hover:shadow-xl transition-shadow duration-300 ease-in-out">
+                                    <div class="inline-block pr-5 sm:pr-10">
+                                        <a href="https://github.com/elijahschrockAGT" target="_blank">
+                                            <div class="w-48 sm:w-80 overflow-hidden rounded-lg shadow-md dark:bg-black hover:shadow-xl transition-shadow duration-300 ease-in-out">
                                                 <img src="/github.png"/>
                                             </div>
                                         </a>
                                     </div>
                                     <div class="inline-block">
                                         <a href="https://www.google.com/maps/place/Las+Vegas,+NV/@36.1248871,-115.339809,11z/data=!3m1!4b1!4m6!3m5!1s0x80beb782a4f57dd1:0x3accd5e6d5b379a3!8m2!3d36.171563!4d-115.1391009!16zL20vMGN2M3c?entry=ttu" target="_blank">
-                                            <div class="w-80 overflow-hidden rounded-lg shadow-md dark:bg-black hover:shadow-xl transition-shadow duration-300 ease-in-out">
+                                            <div class="w-48 sm:w-80 overflow-hidden rounded-lg shadow-md dark:bg-black hover:shadow-xl transition-shadow duration-300 ease-in-out">
                                                 <img src="/location.png"/>
                                             </div>
                                         </a>

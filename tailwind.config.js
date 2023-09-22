@@ -12,6 +12,20 @@ export default {
         './app/Enums/**/*.php',
     ],
 
+    
+    safelist: [
+        'sm:max-w-sm',
+        'sm:max-w-md',
+        'sm:max-w-md md:max-w-lg',
+        'sm:max-w-md md:max-w-xl',
+        'sm:max-w-md md:max-w-xl lg:max-w-2xl',
+        'sm:max-w-md md:max-w-xl lg:max-w-3xl',
+        'sm:max-w-md md:max-w-xl lg:max-w-3xl xl:max-w-4xl',
+        'sm:max-w-md md:max-w-xl lg:max-w-3xl xl:max-w-5xl',
+        'sm:max-w-md md:max-w-xl lg:max-w-3xl xl:max-w-5xl 2xl:max-w-6xl',
+        'sm:max-w-md md:max-w-xl lg:max-w-3xl xl:max-w-5xl 2xl:max-w-7xl',
+    ],
+
     theme: {
         extend: {
             fontFamily: {

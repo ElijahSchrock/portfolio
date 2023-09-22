@@ -20,7 +20,9 @@ class HeroCardsList extends Component
         $cacheKey = 'heroCard-'.$this->__id;
 
         return cache()->remember($cacheKey, 120, function () {
-            return HeroCard::get();
+            return HeroCard::query()
+                ->orderBy('order')
+                ->get();
         });
     }
 

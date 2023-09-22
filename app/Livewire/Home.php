@@ -23,7 +23,10 @@ class Home extends Component
         $cacheKey = 'hero-'.$this->__id;
 
         return cache()->remember($cacheKey, 120, function () {
-            return HeroCard::get();
+            return HeroCard::query()
+            ->with('project')
+            ->orderBy('order')
+            ->get();
         });
     }
     

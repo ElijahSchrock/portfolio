@@ -22,4 +22,9 @@ class Project extends Model implements HasMedia
             ->height(80)
             ->sharpen(10);
     }
+
+    public function heroCard()
+    {
+        return $this->hasOne(\App\Models\HeroCard::class);
+    }
 }

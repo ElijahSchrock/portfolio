@@ -6,12 +6,17 @@
 
     <title>Elijah Schrock</title>
 
+    <link rel="icon" href="/favicon.png" type="image/x-icon"/>
+
     <!-- Fonts -->
     <link rel="preconnect" href="https://fonts.bunny.net">
     <link href="https://fonts.bunny.net/css?family=figtree:400,600&display=swap" rel="stylesheet" />
 
     <!-- Styles -->
     @vite(['resources/css/app.css', 'resources/js/app.js'])
+
+    <!-- Styles -->
+    @livewireStyles
 
 </head>
 <!-- Google tag (gtag.js) -->
@@ -29,6 +34,9 @@
 </script>
 <body class="antialiased">
     <livewire:home />
+    @stack('modals')
 
+    @livewireScripts
+    @livewire('wire-elements-modal')
 </body>
 </html>

@@ -13,4 +13,9 @@ class HeroCard extends Model implements HasMedia
     use InteractsWithMedia;
 
     protected $guarded = [];
+
+    public function project()
+    {
+        return $this->belongsTo(\App\Models\Project::class, 'project_id');
+    }
 }

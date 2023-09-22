@@ -25,7 +25,7 @@
                         <img class="w-32" src="{{ $project->getFirstMedia('images')?->getURL() ?? null }}" />
                     </x-table.cell>
                     <x-table.cell>{{ $project->name }}</x-table.cell>
-                    <x-table.cell class="hidden sm:table-cell">{{ $project->description }}</x-table.cell>
+                    <x-table.cell class="hidden sm:table-cell whitespace-pre-wrap">{{ $project->description }}</x-table.cell>
                     <x-table.cell-bool :value="$project->showing" />
                     <x-table.cell-edit action="$dispatch('openModal', { component: 'edit-project', arguments: { project: {{ $project->id }} }})" />
                 </x-table.row>

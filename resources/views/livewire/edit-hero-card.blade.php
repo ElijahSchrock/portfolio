@@ -1,6 +1,6 @@
 <form wire:submit.prevent="save">
     <x-modal.livewire-ui>
-        <x-slot name="title">{{ $heroCard->getKey() ? 'Edit' : 'New' }} Project</x-slot>
+        <x-slot name="title">{{ $heroCard->getKey() ? 'Edit' : 'New' }} Hero Card</x-slot>
         <x-slot name="content">
             <div class="grid grid-cols-6 space-y-4">
                 <div class="col-span-full">
@@ -35,13 +35,24 @@
                         <x-input.number wire:model="heroCard.order" id="card_order" />
                     </x-input.group>
                 </div>
+
+                <div class="col-span-full">
+                    <x-input.group for="" label="Assign to a Projcet" error="">
+                        <x-input.select wire:model.defer="heroCard.project_id" id="project_id" placeholder="">
+                            <option value=""></option>
+                            @foreach($projects as $project)
+                                <option value="{{ $project->id }}">{{ $project->name }}</option>
+                            @endforeach
+                        </x-input.select>
+                    </x-input.group>
+                </div>
             </div>
         </x-slot>
         <x-slot name="footer">
         <x-toolbar>
             <x-toolbar.flex />
             <x-button type="button" class="bg-gray-700 hover:bg-gray-600" wire:click="closeModal()">Close</x-button>
-            <x-button type="submit" class="bg-blue-800 hover:bg-blue-600">save</x-button>
+            <x-button type="submit" class="bg-blue-800 hover:bg-blue-600">Save</x-button>
         </x-toolbar>
         </x-slot>
     </x-modal.livewire-ui>

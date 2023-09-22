@@ -8,6 +8,15 @@
             <x-input.group for="project_description" label="Description" error="project.description">
                 <x-input.text wire:model="project.description" id="project_description" placeholder="" />
             </x-input.group>
+            <x-input.group for="project_tech_stack" label="Tech Stack" error="project.tech_stack">
+                <x-input.text wire:model="project.tech_stack" id="project_tech_stack" placeholder="" />
+            </x-input.group>
+            <x-input.group for="project_other_tech" label="Other Tech" error="project.other_tech">
+                <x-input.text wire:model="project.other_tech" id="project_other_tech" placeholder="" />
+            </x-input.group>
+            <x-input.group for="project_year_created" label="Year Created" error="project.year_created">
+                <x-input.text wire:model="project.year_created" id="project_year_created" placeholder="" />
+            </x-input.group>
         </x-slot>
         <x-slot name="footer">
             <x-toolbar>
