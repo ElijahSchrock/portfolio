@@ -12,8 +12,7 @@ class Carousel extends Component
 
     public function mount($heroCards)
     {
-        // $this->heroCards = $heroCards;
-        $this->heroCards = [];
+        $this->heroCards = $heroCards;
     }
 
     #[On('next')]
