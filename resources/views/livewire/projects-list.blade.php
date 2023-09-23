@@ -28,6 +28,7 @@
                     <x-table.cell class="hidden sm:table-cell whitespace-pre-wrap">{{ $project->description }}</x-table.cell>
                     <x-table.cell-bool :value="$project->showing" />
                     <x-table.cell-edit action="$dispatch('openModal', { component: 'edit-project', arguments: { project: {{ $project->id }} }})" />
+                    <x-table.cell-delete action="deleteProject({{ $project->id }})"/>
                 </x-table.row>
                 @endforeach
             </x-table.body>

@@ -32,4 +32,11 @@ class ProjectsList extends Component
             'projects' => $this->projects
         ]);
     }
+
+    public function deleteProject(Project $project)
+    {
+        $project->delete();
+
+        $this->dispatch('refreshProjects');
+    }
 }
