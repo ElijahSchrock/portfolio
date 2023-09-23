@@ -42,13 +42,12 @@
                         <div class="mt-6 flow-root" >
                             <div class="-my-6 divide-y divide-gray-500/10">
                                 <div class="space-y-2 py-6">
-                                    <a href="#" class="-mx-3 block rounded-lg px-3 py-2 text-base font-semibold leading-7 text-gray-300 hover:bg-[#151514]">Product</a>
-                                    <a href="#" class="-mx-3 block rounded-lg px-3 py-2 text-base font-semibold leading-7 text-gray-300 hover:bg-[#151514]">Features</a>
-                                    <a href="#" class="-mx-3 block rounded-lg px-3 py-2 text-base font-semibold leading-7 text-gray-300 hover:bg-[#151514]">Marketplace</a>
-                                    <a href="#" class="-mx-3 block rounded-lg px-3 py-2 text-base font-semibold leading-7 text-gray-300 hover:bg-[#151514]">Company</a>
+                                    <a href="#" class="text-sm font-semibold leading-6 text-gray-900 dark:text-slate-300">Resume</a>
+                                    <a href="#" class="text-sm font-semibold leading-6 text-gray-900 dark:text-slate-300">Contact</a>
+                                    <a href="{{ route('register') }}" class="text-sm font-semibold leading-6 text-gray-900 dark:text-slate-300">About</a>
                                 </div>
                                 <div class="py-6">
-                                    <a href="#" class="-mx-3 block rounded-lg px-3 py-2.5 text-base font-semibold leading-7 text-gray-300 hover:bg-[#151514]">Log in</a>
+                                    {{-- <a href="#" class="-mx-3 block rounded-lg px-3 py-2.5 text-base font-semibold leading-7 text-gray-300 hover:bg-[#151514]">Log in</a> --}}
                                 </div>
                             </div>
                         </div>
@@ -71,7 +70,7 @@
                                     @if(count($projects) > 0)
                                         @foreach($projects as $project)
                                             <div class="inline-block {{ $loop->last ? '' : 'pr-8'}}">
-                                                <div class="w-48 h-60 sm:w-64 sm:h-80 max-w-xs overflow-hidden rounded-lg shadow-md dark:bg-black hover:shadow-xl transition-shadow duration-300 ease-in-out">
+                                                <div class="w-48 h-60 sm:w-64 sm:h-80 max-w-xs overflow-hidden rounded-lg shadow-md dark:bg-black hover:shadow-xl transition-shadow duration-300 ease-in-out hover:cursor-pointer" wire:click="$dispatch('openModal', { component: 'project-modal', arguments: { project: {{ $project->id ?? null}} }})">
                                                     <img src="{{ $project->getFirstMedia('images')?->getURL() ?? null }}"/>
                                                 </div>
                                             </div>
