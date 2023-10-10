@@ -32,7 +32,7 @@
     gtag('config', 'G-EK261GEYX1');
 
 </script>
-<body class="antialiased">
+<body class="antialiased min-h-screen">
     <livewire:home />
     @stack('modals')
 

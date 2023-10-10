@@ -1,5 +1,5 @@
     <div>
-        <div class="bg-[#151514]" x-data="{ open: false }" x-cloak>
+        <div class="bg-[#151514] min-h-screen" x-data="{ open: false }" x-cloak>
             {{-- <header> --}}
                 <nav class="bg-[#151514] mx-auto flex max-w-10xl items-center justify-between lg:justify-start p-6 lg:px-8 sticky top-0 z-10" aria-label="Global">
                     <a href="#" class="-m-1.5 p-1.5 mr-5">
@@ -65,7 +65,7 @@
 
                         <!-- Project Cards -->
                         <div class="flex flex-col m-auto p-auto">
-                            <div class="flex overflow-x-scroll pb-10 hide-scroll-bar">
+                            <div class="flex overflow-x-scroll pb-10 scrollbar scrollbar-thumb-slate-600 scrollbar-thumb-rounded-full scrollbar-track-rounded-full">
                                 <div class="flex flex-nowrap">
                                     @if(count($projects) > 0)
                                         @foreach($projects as $project)
@@ -89,7 +89,7 @@
                         <h2 class="text-xl font-bold tracking-tight text-white">Trending Now</h2>
                         <!-- Contact Stuff -->
                         <div class="flex flex-col m-auto p-auto">
-                            <div class="flex overflow-x-scroll pb-10 hide-scroll-bar">
+                            <div class="flex overflow-x-scroll pb-10 scrollbar scrollbar-thumb-slate-600 scrollbar-thumb-rounded-full scrollbar-track-rounded-full">
                                 <div class="flex flex-nowrap">
                                     <div class="inline-block pr-5 sm:pr-10">
                                         <a href="mailTo:etelles98@gmail.com"> 
