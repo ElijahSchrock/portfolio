@@ -15,8 +15,8 @@
                         </button>
                     </div>
                     <div class="hidden lg:flex lg:gap-x-12">
-                        <p wire:click="downloadResume" class="text-sm font-semibold leading-6 text-gray-900 dark:text-slate-300 hover:cursor-pointer">Resume</p>
-                        <p class="text-sm font-semibold leading-6 text-gray-900 dark:text-slate-300 hover:cursor-pointer" wire:click="$dispatch('openModal', { component: 'about-me-modal' })">About</p>
+                        <p wire:click="downloadResume" class="text-sm font-semibold leading-6 text-slate-300 hover:cursor-pointer">Resume</p>
+                        <p class="text-sm font-semibold leading-6 text-slate-300 hover:cursor-pointer" wire:click="$dispatch('openModal', { component: 'about-me-modal' })">About</p>
                     </div>
                 </nav>
                 <!-- Mobile menu, show/hide based on menu open state. -->
@@ -39,8 +39,8 @@
                         <div class="mt-6 flow-root" >
                             <div class="-my-6 divide-y divide-gray-500/10">
                                 <div class="space-y-2 py-6" x-on:click="open = !open">
-                                    <p wire:click="downloadResume" class="text-sm font-semibold leading-6 text-gray-900 dark:text-slate-300 hover:cursor-pointer">Resume</p>
-                                    <p class="text-sm font-semibold leading-6 text-gray-900 dark:text-slate-300 hover:cursor-pointer" wire:click="$dispatch('openModal', { component: 'about-me-modal' })">About</p>
+                                    <p wire:click="downloadResume" class="text-sm font-semibold leading-6 text-slate-300 hover:cursor-pointer">Resume</p>
+                                    <p class="text-sm font-semibold leading-6 text-slate-300 hover:cursor-pointer" wire:click="$dispatch('openModal', { component: 'about-me-modal' })">About</p>
                                 </div>
                                 <div class="py-6">
                                     {{-- <a href="#" class="-mx-3 block rounded-lg px-3 py-2.5 text-base font-semibold leading-7 text-gray-300 hover:bg-[#151514]">Log in</a> --}}

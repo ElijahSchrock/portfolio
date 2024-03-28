@@ -1,6 +1,6 @@
 <div>
     <div class="w-full">
-        <div class="relative isolate bg-no-repeat bg-cover bg-center bg-transparent" style="background-image: url({{ $project->heroCard->getFirstMedia('heroCard')?->getURL() }})">
+        <div class="relative isolate bg-no-repeat bg-[center_right_-18rem] md:bg-center bg-cover" style="background-image: url({{ $project->heroCard->getFirstMedia('heroCard')?->getURL() }})">
             <div class="absolute w-full h-full bg-gradient-to-b from-transparent via-transparent to-black -z-50"></div>
             <div class="mx-auto px-6 lg:flex lg:items-center lg:gap-x-10 lg:px-8 relative">
                 <div class="mx-auto max-w-2xl lg:mx-0 lg:flex-auto">
