@@ -40,9 +40,11 @@
             </main>
         </div>
 
+        @persist('scripts')
+        @livewire('wire-elements-modal')
+        @endpersist
         @stack('modals')
 
-        @livewireScripts
-        @livewire('wire-elements-modal')
+        @livewireScriptsConfig
     </body>
 </html>

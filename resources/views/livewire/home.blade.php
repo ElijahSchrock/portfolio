@@ -15,11 +15,8 @@
                         </button>
                     </div>
                     <div class="hidden lg:flex lg:gap-x-12">
-                        <a href="#" class="text-sm font-semibold leading-6 text-gray-900 dark:text-slate-300">Resume</a>
-                        <a href="#" class="text-sm font-semibold leading-6 text-gray-900 dark:text-slate-300">Contact</a>
-                        <a href="{{ route('register') }}" class="text-sm font-semibold leading-6 text-gray-900 dark:text-slate-300">About</a>
-
-                        {{-- <a href="{{ route('login') }}"" class=" text-sm font-semibold leading-6 text-gray-900 dark:text-slate-300">Log in <span aria-hidden="true">&rarr;</span></a> --}}
+                        <p wire:click="downloadResume" class="text-sm font-semibold leading-6 text-gray-900 dark:text-slate-300 hover:cursor-pointer">Resume</p>
+                        <p class="text-sm font-semibold leading-6 text-gray-900 dark:text-slate-300 hover:cursor-pointer" wire:click="$dispatch('openModal', { component: 'about-me-modal' })">About</p>
                     </div>
                 </nav>
                 <!-- Mobile menu, show/hide based on menu open state. -->
@@ -42,9 +39,8 @@
                         <div class="mt-6 flow-root" >
                             <div class="-my-6 divide-y divide-gray-500/10">
                                 <div class="space-y-2 py-6">
-                                    <a href="#" class="text-sm font-semibold leading-6 text-gray-900 dark:text-slate-300">Resume</a>
-                                    <a href="#" class="text-sm font-semibold leading-6 text-gray-900 dark:text-slate-300">Contact</a>
-                                    <a href="{{ route('register') }}" class="text-sm font-semibold leading-6 text-gray-900 dark:text-slate-300">About</a>
+                                    <p wire:click="downloadResume" class="text-sm font-semibold leading-6 text-gray-900 dark:text-slate-300 hover:cursor-pointer">Resume</p>
+                                    <p class="text-sm font-semibold leading-6 text-gray-900 dark:text-slate-300 hover:cursor-pointer" wire:click="$dispatch('openModal', { component: 'about-me-modal' })">About</p>
                                 </div>
                                 <div class="py-6">
                                     {{-- <a href="#" class="-mx-3 block rounded-lg px-3 py-2.5 text-base font-semibold leading-7 text-gray-300 hover:bg-[#151514]">Log in</a> --}}
@@ -70,7 +66,7 @@
                                     @if(count($projects) > 0)
                                         @foreach($projects as $project)
                                             <div class="inline-block {{ $loop->last ? '' : 'pr-8'}}">
-                                                <div class="w-48 h-60 sm:w-64 sm:h-80 max-w-xs overflow-hidden rounded-lg shadow-md dark:bg-black hover:shadow-xl transition-shadow duration-300 ease-in-out hover:cursor-pointer" wire:click="$dispatch('openModal', { component: 'project-modal', arguments: { project: {{ $project->id ?? null}} }})">
+                                                <div class="w-48 h-60 sm:w-64 sm:h-80 max-w-xs overflow-hidden rounded-lg shadow-md dark:bg-black hover:shadow-xl transition-shadow duration-300 ease-in-out hover:cursor-pointer" wire:click="$dispatch('openModal', { component: 'project-modal', arguments: { project: {{ $project->id ?? null}} }})" wire:key="{{ $project->id }}">
                                                     <img src="{{ $project->getFirstMedia('images')?->getURL() ?? null }}"/>
                                                 </div>
                                             </div>
@@ -86,10 +82,10 @@
                             </div>
                         </div>
 
-                        <h2 class="text-xl font-bold tracking-tight text-white">Trending Now</h2>
+                        <h2 class="text-xl font-bold tracking-tight text-white mt-2">Trending Now</h2>
                         <!-- Contact Stuff -->
                         <div class="flex flex-col m-auto p-auto">
-                            <div class="flex overflow-x-scroll pb-10 scrollbar scrollbar-thumb-slate-600 scrollbar-thumb-rounded-full scrollbar-track-rounded-full">
+                            <div class="flex overflow-x-scroll pb-7 scrollbar scrollbar-thumb-slate-600 scrollbar-thumb-rounded-full scrollbar-track-rounded-full">
                                 <div class="flex flex-nowrap">
                                     <div class="inline-block pr-5 sm:pr-10">
                                         <a href="mailTo:etelles98@gmail.com"> 

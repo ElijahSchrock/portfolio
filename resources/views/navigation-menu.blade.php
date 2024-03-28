@@ -21,6 +21,9 @@
                     <x-nav-link href="{{ route('hero-cards') }}" :active="request()->routeIs('hero-cards')">
                         {{ __('Hero Cards') }}
                     </x-nav-link>
+                    <x-nav-link href="{{ route('resume') }}" :active="request()->routeIs('resume')">
+                        {{ __('Resume') }}
+                    </x-nav-link>
                 </div>
             </div>
 
@@ -101,6 +104,9 @@
             </x-responsive-nav-link>
             <x-responsive-nav-link href="{{ route('hero-cards') }}" :active="request()->routeIs('hero-cards')">
                 {{ __('Hero Cards') }}
+            </x-responsive-nav-link>
+            <x-responsive-nav-link href="{{ route('resume') }}" :active="request()->routeIs('resume')">
+                {{ __('Resume') }}
             </x-responsive-nav-link>
         </div>
 

@@ -4,18 +4,17 @@ namespace App\Livewire;
 
 use Livewire\Component;
 use App\Models\HeroCard;
+use Livewire\Attributes\On;
 use Livewire\WithFileUploads;
+use Livewire\Attributes\Computed;
 
 class HeroCardsList extends Component
 {
     use WithFileUploads;
     use CanToast;
 
-    protected $listeners = [
-        'refreshHeroCards' => 'onRefreshHeroCards'
-    ];
-
-    public function getHeroCardsProperty()
+    #[Computed]
+    public function heroCards()
     {
         $cacheKey = 'heroCard-'.$this->__id;
 
@@ -26,6 +25,7 @@ class HeroCardsList extends Component
         });
     }
 
+    #[On('refreshHeroCards')]
     public function onRefreshHeroCards()
     {
         cache()->forget('heroCard-'.$this->__id);
@@ -33,9 +33,7 @@ class HeroCardsList extends Component
 
     public function render()
     {
-        return view('livewire.hero-cards-list',[
-            'heroCards' => $this->heroCards
-        ]);
+        return view('livewire.hero-cards-list');
     }
 
     public function deleteCard(HeroCard $heroCard)
