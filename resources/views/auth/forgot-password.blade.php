@@ -9,12 +9,18 @@
         </div>
 
         @if (session('status'))
-            <div class="mb-4 font-medium text-sm text-green-600 dark:text-green-400">
+            <div class="mb-4 font-medium text-sm text-green-600">
                 {{ session('status') }}
             </div>
+        @else
+            @if ($errors->any())
+                <div class="mb-4 font-medium text-sm text-green-600">
+                    <div class="font-medium text-gren-600">{{ __('passwords.sent') }}</div>
+                </div>
+            @endif
         @endif
 
-        <x-validation-errors class="mb-4" />
+        {{-- <x-validation-errors class="mb-4" /> --}}
 
         <form method="POST" action="{{ route('password.email') }}">
             @csrf
