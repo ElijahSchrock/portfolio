@@ -13,10 +13,10 @@
     <link href="https://fonts.bunny.net/css?family=figtree:400,600&display=swap" rel="stylesheet" />
 
     <!-- Styles -->
+    @livewireStyles
+    <!-- Styles -->
     @vite(['resources/css/app.css', 'resources/js/app.js'])
 
-    <!-- Styles -->
-    @livewireStyles
 
 </head>
 <!-- Google tag (gtag.js) -->
@@ -34,9 +34,9 @@
 </script>
 <body class="antialiased min-h-screen">
     <livewire:home />
+    @livewire('wire-elements-modal')
     @stack('modals')
 
-    @livewireScripts
-    @livewire('wire-elements-modal')
+    @livewireScriptConfig
 </body>
 </html>
