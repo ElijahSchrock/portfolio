@@ -25,4 +25,5 @@ Route::middleware([
     Route::get('/dashboard', \App\Livewire\AdminDashboard::class)->name('dashboard');
     Route::get('/projects', \App\Livewire\ProjectsList::class)->name('projects');
     Route::get('/hero-cards', \App\Livewire\HeroCardsList::class)->name('hero-cards');
+    Route::get('/resume', \App\Livewire\ResumeUpload::class)->name('resume');
 });

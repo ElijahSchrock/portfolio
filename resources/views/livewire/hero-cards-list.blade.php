@@ -17,17 +17,17 @@
         
         <x-slot name="body">
             <x-table.body>
-                @foreach($heroCards as $heroCard)
+                @foreach($this->heroCards as $_heroCard)
                     <x-table.row>
                         <x-table.cell>
-                            <img class="w-32" src="{{ $heroCard->getFirstMedia('heroCard')?->getURL() ?? null }}"/>
+                            <img class="w-32" src="{{ $_heroCard->getFirstMedia('heroCard')?->getURL() ?? null }}"/>
                         </x-table.cell>
                         <x-table.cell>
-                            <img class="w-32" src="{{ $heroCard->getFirstMedia('logo')?->getURL() ?? null }}"/>
+                            <img class="w-32" src="{{ $_heroCard->getFirstMedia('logo')?->getURL() ?? null }}"/>
                         </x-table.cell>
-                        <x-table.cell >{{ $heroCard->order }}</x-table.cell>
-                        <x-table.cell-edit action="$dispatch('openModal', { component: 'edit-hero-card', arguments: { heroCard: {{ $heroCard->id }} }})"/>
-                        <x-table.cell-delete action="deleteCard({{ $heroCard->id }})"/>
+                        <x-table.cell >{{ $_heroCard->order }}</x-table.cell>
+                        <x-table.cell-edit action="$dispatch('openModal', { component: 'edit-hero-card', arguments: { heroCard: {{ $_heroCard->id }} }})"/>
+                        <x-table.cell-delete action="deleteCard({{ $_heroCard->id }})"/>
                     </x-table.row>
                 @endforeach
             </x-table.body>

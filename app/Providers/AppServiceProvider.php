@@ -23,6 +23,7 @@ class AppServiceProvider extends ServiceProvider
         Relation::morphMap([
             'project' => 'App\Models\Project',
             'hero_card' => 'App\Models\HeroCard',
+            'resume' => 'App\Models\Resume',
         ]);
     }
 }
