@@ -88,7 +88,7 @@
                             <div class="flex overflow-x-scroll pb-7 scrollbar scrollbar-thumb-slate-600 scrollbar-thumb-rounded-full scrollbar-track-rounded-full">
                                 <div class="flex flex-nowrap">
                                     <div class="inline-block pr-5 sm:pr-10">
-                                        <a href="mailTo:etelles98@gmail.com"> 
+                                        <a href="mailTo:elijahschrock.dev@gmail.com"> 
                                             <div class="w-48 sm:w-80 overflow-hidden rounded-lg shadow-md dark:bg-black hover:shadow-xl transition-shadow duration-300 ease-in-out">
                                                 <img src="/email.png"/>
                                             </div>
