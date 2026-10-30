@@ -29,28 +29,40 @@
             </div>
         </div>
         <div class="p-2 pb-7 bg-linear-to-t from-[#191819] via-[#191819] to-black">
-            <div class="grid grid-cols-7 space-x-4">
-                <div class="col-span-full lg:col-span-4 ml-4">
-                    @foreach($techStacks as $tech)
-                        <x-pill label="{{ $tech }}" color="red" />
-                    @endforeach
-                </div>
-                <div class="col-span-full lg:col-start-1 lg:col-span-3 text-slate-300 mt-3 flex space-x-2">
-                    <h2 class="text-lg font-bold text-green-600">{{ rand(95, 100) }}% Match</h2>
-                    @if(filled($project->year_created))
-                        <h2 class="text-lg font-bold text-gray-400">{{ $project->year_created }}</h2>
-                    @endif
-                    <div class="flex justify-between items-center text-gray-400">
-                        <x-fas-code class="h-5 w-5 ml-2" />
-                        <x-fas-code-branch class="h-4 w-4 ml-2" />
-                        <x-fas-terminal class="h-4 w-4 ml-2" />
-
+            <div class="ml-4">
+                @foreach($techStacks as $tech)
+                    <x-pill label="{{ $tech }}" color="red" />
+                @endforeach
+            </div>
+            <div class="mt-3 grid grid-cols-1 items-start gap-6 lg:grid-cols-7 lg:gap-x-4">
+                <div class="min-w-0 lg:col-span-5">
+                    <div class="flex flex-wrap items-center gap-x-2 gap-y-2 text-slate-300">
+                        <h2 class="text-lg font-bold text-green-600">{{ rand(95, 100) }}% Match</h2>
+                        @if(filled($project->year_created))
+                            <h2 class="text-lg font-bold text-gray-400">{{ $project->year_created }}</h2>
+                        @endif
+                        <div class="flex shrink-0 items-center gap-2 text-gray-400">
+                            <x-fas-code class="h-5 w-5" />
+                            <x-fas-code-branch class="h-4 w-4" />
+                            <x-fas-terminal class="h-4 w-4" />
+                        </div>
+                    </div>
+                    <h2 class="mt-3 text-lg font-bold text-slate-300">{{ $project->name }}</h2>
+                    <div class="mt-1 text-gray-400">
+                        {{ $project->description }}
                     </div>
                 </div>
-                <div class="col-span-5 lg:col-start-6 lg:col-span-2 text-sm">
-                    <span class="text-gray-500">Stack:</span> <span class="text-gray-200">{{ $project->tech_stack }}</span>
+                <div class="min-w-0 space-y-4 text-sm lg:col-span-2">
+                    <div>
+                        <span class="text-gray-500">Stack:</span> <span class="text-gray-200">{{ $project->tech_stack }}</span>
+                    </div>
+                    @if(filled($project->other_tech))
+                        <div>
+                            <span class="text-gray-500">Other Technologies:</span> <span class="text-gray-200">{{ $project->other_tech }}</span>
+                        </div>
+                    @endif
                     @if(filled($project->repository_url))
-                        <div class="mt-4">
+                        <div>
                             <h3 class="mb-2 text-sm font-medium text-gray-500">Behind the Build</h3>
                             <a href="{{ $project->repository_url }}" target="_blank" rel="noopener noreferrer"
                                aria-label="View {{ $project->name }} source (opens in a new tab)"
@@ -63,20 +75,6 @@
                             </a>
                         </div>
                     @endif
-                </div>
-                <div class="hidden lg:block lg:col-start-1 lg:col-span-3 text-slate-300 mt-3">
-                    <h2 class="text-lg font-bold">{{ $project->name }}</h2>
-                </div>
-                @if(filled($project->other_tech))
-                    <div class="col-span-full lg:col-start-6 lg:col-span-2 text-sm">
-                        <span class="text-gray-500">Other Technologies:</span> <span class="text-gray-200">{{ $project->other_tech }}</span>
-                    </div>
-                @endif
-                <div class="col-span-full lg:hidden text-slate-300 mt-3">
-                    <h2 class="text-lg font-bold">{{ $project->name }}</h2>
-                </div>
-                <div class="col-span-full lg:col-span-5 text-gray-400">
-                    {{ $project->description }}
                 </div>
             </div>
         </div>
