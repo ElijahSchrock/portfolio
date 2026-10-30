@@ -3,33 +3,33 @@
 namespace App\Livewire;
 
 use App\Models\Project;
+use Livewire\Attributes\Computed;
 use Livewire\Component;
 
 class ProjectsList extends Component
 {
+    use RequiresOwner;
+
     protected $listeners = [
         '$refresh',
-        'refreshProjects' => 'onRefreshProjects'
+        'refreshProjects' => 'onRefreshProjects',
     ];
 
-    public function getProjectsProperty()
+    #[Computed]
+    public function projects()
     {
-        $cacheKey = 'project-'.$this->__id;
-
-        return cache()->remember($cacheKey, 120, function () {
-            return Project::get();
-        });
+        return Project::get();
     }
-    
+
     public function onRefreshProjects()
     {
-        cache()->forget('project-'.$this->__id);
+        unset($this->projects);
     }
 
     public function render()
     {
         return view('livewire.projects-list', [
-            'projects' => $this->projects
+            'projects' => $this->projects,
         ]);
     }
 

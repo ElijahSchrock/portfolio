@@ -10,7 +10,7 @@
     };
 @endphp
 <div class="flex">
-    <input {{ $attributes->class(['input-text-color input-focus-ring' => true])->merge(['class' => $sizeClasses . '  border-gray-300 rounded dark:bg-gray-900 dark:border-gray-600'.($attributes->get('disabled') ? ' opacity-50 cursor-not-allowed' : '').($disabled ? ' opacity-50 cursor-not-allowed' : '')]) }}
+    <input {{ $attributes->class(['input-text-color input-focus-ring' => true])->merge(['class' => $sizeClasses . '  border-gray-300 rounded-sm dark:bg-gray-900 dark:border-gray-600'.($attributes->get('disabled') ? ' opacity-50 cursor-not-allowed' : '').($disabled ? ' opacity-50 cursor-not-allowed' : '')]) }}
         type="checkbox"
         {{ $disabled ? 'disabled' : '' }}
     />

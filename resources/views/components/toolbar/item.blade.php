@@ -1,3 +1,3 @@
-<div {{ $attributes->merge(['class' => 'flex-shrink-0 flex items-center']) }}>
+<div {{ $attributes->merge(['class' => 'shrink-0 flex items-center']) }}>
     {{ $slot }}
 </div>

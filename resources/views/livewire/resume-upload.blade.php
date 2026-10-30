@@ -57,10 +57,10 @@
                                 </x-input.file-upload>
                                 @else
                                 <div class="space-y-4" wire:loading.class="opacity-25" wire:loading.attr="disabled">
-                                    <div class="text-sm font-bold text-slate-300 space-y-2 p-3 rounded-md bg-slate-800 border border-slate-700 shadow-sm">
+                                    <div class="text-sm font-bold text-slate-300 space-y-2 p-3 rounded-md bg-slate-800 border border-slate-700 shadow-xs">
                                         <div class="flex justify-between">
                                             <div>{{ $fileUpload->getClientOriginalName() }}</div>
-                                            <button type="button" class="flex items-center space-x-2 text-gray-400 hover:text-slate-500 text-sm leading-5 font-medium focus:outline-none focus:underline transition duration-150 ease-in-out" wire:click="removeFile">
+                                            <button type="button" class="flex items-center space-x-2 text-gray-400 hover:text-slate-500 text-sm leading-5 font-medium focus:outline-hidden focus:underline transition duration-150 ease-in-out" wire:click="removeFile">
                                             <x-dynamic-component component="fas-trash-can" class="h-4 w-4" />
                                             Remove File
                                         </button>
@@ -78,7 +78,7 @@
 
                 <div class="mt-6 flex items-center justify-end gap-x-6">
                     <button type="button" class="text-sm font-semibold leading-6 text-white">Cancel</button>
-                    <button type="submit" class="rounded-md bg-indigo-500 px-3 py-2 text-sm font-semibold text-white shadow-sm hover:bg-indigo-400 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-500">Save</button>
+                    <button type="submit" class="rounded-md bg-indigo-500 px-3 py-2 text-sm font-semibold text-white shadow-xs hover:bg-indigo-400 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-500">Save</button>
                 </div>
             </form>
         

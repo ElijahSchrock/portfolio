@@ -8,6 +8,7 @@ use LivewireUI\Modal\ModalComponent;
 class EditProject extends ModalComponent
 {
     use CanToast;
+    use RequiresOwner;
 
     public Project $project;
 
@@ -16,8 +17,8 @@ class EditProject extends ModalComponent
         'project.description' => 'required',
         'project.showing' => 'boolean',
         'project.tech_stack' => 'required',
-        'project.other_tech' => 'required',
-        'project.year_created' => 'required'
+        'project.other_tech' => 'nullable|string|max:255',
+        'project.year_created' => 'nullable|string|max:255',
     ];
 
     protected $validationAttributes = [
@@ -25,7 +26,7 @@ class EditProject extends ModalComponent
         'project.description' => 'description',
         'project.tech_stack' => 'tech stack',
         'project.other_tech' => 'other tech',
-        'project.year_created' => 'year created'
+        'project.year_created' => 'year created',
     ];
 
     public function mount(Project $project)
@@ -48,7 +49,7 @@ class EditProject extends ModalComponent
             'showing' => $this->project->showing,
             'tech_stack' => $this->project->tech_stack,
             'other_tech' => $this->project->other_tech,
-            'year_created' => $this->project->year_created
+            'year_created' => $this->project->year_created,
         ]);
 
         $this->toast('Project updated successfully!', type: 'success');

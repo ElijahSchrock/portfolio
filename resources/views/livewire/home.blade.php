@@ -16,7 +16,7 @@
                     </div>
                     <div class="hidden lg:flex lg:gap-x-12">
                         <p wire:click="downloadResume" class="text-sm font-semibold leading-6 text-slate-300 hover:cursor-pointer">Resume</p>
-                        <p class="text-sm font-semibold leading-6 text-slate-300 hover:cursor-pointer" wire:click="$dispatch('openModal', { component: 'about-me-modal' })">About</p>
+                        <p class="text-sm font-semibold leading-6 text-slate-300 hover:cursor-pointer" wire:click="$dispatch('openModal', { modalComponent: 'about-me-modal' })">About</p>
                     </div>
                 </nav>
                 <!-- Mobile menu, show/hide based on menu open state. -->
@@ -40,7 +40,7 @@
                             <div class="-my-6 divide-y divide-gray-500/10">
                                 <div class="space-y-2 py-6" x-on:click="open = !open">
                                     <p wire:click="downloadResume" class="text-sm font-semibold leading-6 text-slate-300 hover:cursor-pointer">Resume</p>
-                                    <p class="text-sm font-semibold leading-6 text-slate-300 hover:cursor-pointer" wire:click="$dispatch('openModal', { component: 'about-me-modal' })">About</p>
+                                    <p class="text-sm font-semibold leading-6 text-slate-300 hover:cursor-pointer" wire:click="$dispatch('openModal', { modalComponent: 'about-me-modal' })">About</p>
                                 </div>
                                 <div class="py-6">
                                     {{-- <a href="#" class="-mx-3 block rounded-lg px-3 py-2.5 text-base font-semibold leading-7 text-gray-300 hover:bg-[#151514]">Log in</a> --}}
@@ -66,7 +66,7 @@
                                     @if(count($projects) > 0)
                                         @foreach($projects as $project)
                                             <div class="inline-block {{ $loop->last ? '' : 'pr-8'}}">
-                                                <div class="w-48 h-60 sm:w-64 sm:h-80 max-w-xs overflow-hidden rounded-lg shadow-md dark:bg-black hover:shadow-xl transition-shadow duration-300 ease-in-out hover:cursor-pointer" wire:click="$dispatch('openModal', { component: 'project-modal', arguments: { project: {{ $project->id ?? null}} }})" wire:key="{{ $project->id }}">
+                                                <div class="w-48 h-60 sm:w-64 sm:h-80 max-w-xs overflow-hidden rounded-lg shadow-md dark:bg-black hover:shadow-xl transition-shadow duration-300 ease-in-out hover:cursor-pointer" wire:click="$dispatch('openModal', { modalComponent: 'project-modal', arguments: { project: {{ $project->id ?? null}} }})" wire:key="{{ $project->id }}">
                                                     <img src="{{ $project->getFirstMedia('images')?->getURL() ?? null }}"/>
                                                 </div>
                                             </div>

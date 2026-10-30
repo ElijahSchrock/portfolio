@@ -2,43 +2,44 @@
 
 namespace App\Livewire;
 
-use App\Models\Project;
 use App\Models\HeroCard;
+use App\Models\Project;
 use Livewire\WithFileUploads;
 use LivewireUI\Modal\ModalComponent;
 
 class EditHeroCard extends ModalComponent
 {
     use CanToast;
+    use RequiresOwner;
     use WithFileUploads;
 
     public HeroCard $heroCard;
 
     public $bannerUpload;
+
     public $logoUpload;
 
     protected $listeners = [
-        '$refresh'
+        '$refresh',
     ];
 
     protected $rules = [
         'heroCard.order' => 'required|integer',
-        'heroCard.project_id' => ''
+        'heroCard.project_id' => '',
     ];
 
     protected $validationAttributes = [
         'heroCard.order' => 'order',
-        'heroCard.project_id' => 'project'
+        'heroCard.project_id' => 'project',
     ];
-    
+
     public function mount(HeroCard $heroCard)
     {
         $this->heroCard = $heroCard;
 
-        if (! $this->heroCard->getKey())
-        {
+        if (! $this->heroCard->getKey()) {
             $this->heroCard = HeroCard::create([
-                'order' => 0
+                'order' => 0,
             ]);
         }
     }
@@ -50,8 +51,8 @@ class EditHeroCard extends ModalComponent
 
     public function render()
     {
-        return view('livewire.edit-hero-card',[
-            'projects' => $this->projects
+        return view('livewire.edit-hero-card', [
+            'projects' => $this->projects,
         ]);
     }
 
@@ -89,16 +90,15 @@ class EditHeroCard extends ModalComponent
 
         $this->heroCard->update([
             'order' => $this->heroCard->order,
-            'project_id' => $this->heroCard->project_id
+            'project_id' => $this->heroCard->project_id,
         ]);
 
         $this->closeModalWithEvents([
-            \App\Livewire\HeroCardsList::class => 'refreshHeroCards'
+            HeroCardsList::class => 'refreshHeroCards',
         ]);
 
         return $this->toast('Hero card updated successfully!', type: 'success');
     }
-
 
     public static function modalMaxWidth(): string
     {

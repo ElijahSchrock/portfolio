@@ -2,12 +2,13 @@
 
 namespace App\Livewire;
 
-use Livewire\Component;
 use Livewire\Attributes\On;
+use Livewire\Component;
 
 class Carousel extends Component
 {
     public $heroCards;
+
     public $activeIndex = 0;
 
     public function mount($heroCards)
@@ -18,11 +19,19 @@ class Carousel extends Component
     #[On('next')]
     public function next()
     {
+        if (count($this->heroCards) < 2) {
+            return;
+        }
+
         $this->activeIndex = ($this->activeIndex + 1) % count($this->heroCards);
     }
-    
+
     public function prev()
     {
+        if (count($this->heroCards) < 2) {
+            return;
+        }
+
         $this->activeIndex = ($this->activeIndex - 1 + count($this->heroCards)) % count($this->heroCards);
     }
 
@@ -31,4 +40,3 @@ class Carousel extends Component
         return view('livewire.carousel');
     }
 }
-

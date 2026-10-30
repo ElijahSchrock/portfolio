@@ -6,12 +6,12 @@
     'style' => '',
     ])
 
-<div class="inline-flex flex-shrink-0 relative">
+<div class="inline-flex shrink-0 relative">
     <button
         {{ ($disable) ? "disabled=disabled" : "" }}
         {{ $attributes->merge([
             'type' => 'button',
-            'class' => 'flex justify-center items-center space-x-2 py-2 px-3 rounded-md text-sm leading-5 disabled:cursor-not-allowed disabled:opacity-50 font-medium focus:outline-none focus:ring-2 focus:ring-offset-2  transition duration-150 ease-in-out dark:text-slate-200' . ($attributes->get('disabled') || $disable ? ' opacity-50 cursor-not-allowed' : ''),
+            'class' => 'flex justify-center items-center space-x-2 py-2 px-3 rounded-md text-sm leading-5 disabled:cursor-not-allowed disabled:opacity-50 font-medium focus:outline-hidden focus:ring-2 focus:ring-offset-2  transition duration-150 ease-in-out dark:text-slate-200' . ($attributes->get('disabled') || $disable ? ' opacity-50 cursor-not-allowed' : ''),
         ]) }}
     >
         @if($icon)<x-dynamic-component :component="$icon" class="w-4 h-4 {{ $animate ? 'animate-spin' : '' }} {{ $iconClasses }}" />@endif

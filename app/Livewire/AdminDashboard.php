@@ -3,28 +3,34 @@
 namespace App\Livewire;
 
 use App\Models\Project;
+use Illuminate\Support\Facades\Validator;
 use Livewire\Component;
 use Livewire\WithFileUploads;
-use Illuminate\Support\Facades\Validator;
 
 class AdminDashboard extends Component
 {
-    use WithFileUploads;
     use CanToast;
+    use RequiresOwner;
+    use WithFileUploads;
 
     public $name;
+
     public $description;
+
     public $fileUpload;
+
     public $techStack;
+
     public $otherTech;
+
     public $yearCreated;
 
     protected $rules = [
         'name' => 'required',
         'description' => 'required',
         'techStack' => 'required',
-        'otherTech' => 'required',
-        'yearCreated' => 'required',
+        'otherTech' => 'nullable|string|max:255',
+        'yearCreated' => 'nullable|string|max:255',
     ];
 
     protected $validationAttributes = [

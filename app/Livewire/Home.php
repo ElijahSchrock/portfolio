@@ -2,42 +2,35 @@
 
 namespace App\Livewire;
 
-use App\Models\Resume;
-use App\Models\Project;
-use Livewire\Component;
 use App\Models\HeroCard;
-use Livewire\Attributes\Computed;
+use App\Models\Project;
+use App\Models\Resume;
 use Illuminate\Support\Facades\Storage;
+use Livewire\Attributes\Computed;
+use Livewire\Component;
 
 class Home extends Component
 {
-
-    public function getProjectsProperty()
+    #[Computed]
+    public function projects()
     {
-        $cacheKey = 'project-' . $this->__id;
-
-        return cache()->remember($cacheKey, 120, function () {
-            return Project::get();
-        });
+        return Project::get();
     }
 
-    public function getHeroCardsProperty()
+    #[Computed]
+    public function heroCards()
     {
-        $cacheKey = 'hero-' . $this->__id;
-
-        return cache()->remember($cacheKey, 120, function () {
-            return HeroCard::query()
-                ->with('project')
-                ->orderBy('order')
-                ->get();
-        });
+        return HeroCard::query()
+            ->with('project')
+            ->orderBy('order')
+            ->get();
     }
 
     public function render()
     {
         return view('livewire.home', [
             'projects' => $this->projects,
-            'heroCards' => $this->heroCards
+            'heroCards' => $this->heroCards,
         ]);
     }
 
@@ -49,11 +42,10 @@ class Home extends Component
 
     public function downloadResume()
     {
-        $path = $this->resume->getFirstMedia("file")->getPath();
-        $fileName = $this->resume->getFirstMedia("file")->file_name;
+        $media = $this->resume?->getFirstMedia('file');
 
-        if (Storage::cloud()->exists($path)) {
-            return Storage::disk("do")->download($path, $fileName);
+        if ($media && Storage::disk($media->disk)->exists($media->getPathRelativeToRoot())) {
+            return Storage::disk($media->disk)->download($media->getPathRelativeToRoot(), $media->file_name);
         }
     }
 }

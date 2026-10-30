@@ -3,27 +3,27 @@
 namespace App\Livewire;
 
 use App\Models\Resume;
-use Livewire\Component;
-use App\Livewire\CanToast;
-use Livewire\WithFileUploads;
-use Livewire\Attributes\Computed;
 use Illuminate\Support\Facades\Validator;
+use Livewire\Attributes\Computed;
+use Livewire\Component;
+use Livewire\WithFileUploads;
 
 class ResumeUpload extends Component
 {
-    use WithFileUploads;
     use CanToast;
+    use RequiresOwner;
+    use WithFileUploads;
 
     public $fileUpload;
 
     public $name;
 
     protected $rules = [
-        'name' => 'required'
+        'name' => 'required',
     ];
 
     protected $validationAttributes = [
-        'name' => 'name'
+        'name' => 'name',
     ];
 
     #[Computed]
@@ -76,7 +76,7 @@ class ResumeUpload extends Component
         $resume = Resume::find($id);
 
         $resume->update([
-            'is_active' => false
+            'is_active' => false,
         ]);
 
         return $this->toast('Resume Deactivated', type: 'success');

@@ -2,10 +2,10 @@
 
 namespace App\Models;
 
-use Spatie\MediaLibrary\HasMedia;
-use Illuminate\Database\Eloquent\Model;
-use Spatie\MediaLibrary\InteractsWithMedia;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
+use Illuminate\Database\Eloquent\Model;
+use Spatie\MediaLibrary\HasMedia;
+use Spatie\MediaLibrary\InteractsWithMedia;
 use Spatie\MediaLibrary\MediaCollections\Models\Media;
 
 class Project extends Model implements HasMedia
@@ -15,7 +15,7 @@ class Project extends Model implements HasMedia
 
     protected $guarded = [];
 
-    public function registerMediaConversions(Media $media = null): void
+    public function registerMediaConversions(?Media $media = null): void
     {
         $this->addMediaConversion('thumb')
             ->width(64)
@@ -25,6 +25,6 @@ class Project extends Model implements HasMedia
 
     public function heroCard()
     {
-        return $this->hasOne(\App\Models\HeroCard::class);
+        return $this->hasOne(HeroCard::class);
     }
 }

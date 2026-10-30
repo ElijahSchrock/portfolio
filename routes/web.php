@@ -1,5 +1,9 @@
 <?php
 
+use App\Livewire\AdminDashboard;
+use App\Livewire\HeroCardsList;
+use App\Livewire\ProjectsList;
+use App\Livewire\ResumeUpload;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -21,9 +25,10 @@ Route::middleware([
     'auth:sanctum',
     config('jetstream.auth_session'),
     'verified',
+    'can:manage-portfolio',
 ])->group(function () {
-    Route::get('/dashboard', \App\Livewire\AdminDashboard::class)->name('dashboard');
-    Route::get('/projects', \App\Livewire\ProjectsList::class)->name('projects');
-    Route::get('/hero-cards', \App\Livewire\HeroCardsList::class)->name('hero-cards');
-    Route::get('/resume', \App\Livewire\ResumeUpload::class)->name('resume');
+    Route::get('/dashboard', AdminDashboard::class)->name('dashboard');
+    Route::get('/projects', ProjectsList::class)->name('projects');
+    Route::get('/hero-cards', HeroCardsList::class)->name('hero-cards');
+    Route::get('/resume', ResumeUpload::class)->name('resume');
 });
