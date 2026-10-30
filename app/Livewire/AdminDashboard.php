@@ -15,6 +15,10 @@ class AdminDashboard extends Component
 
     public $name;
 
+    public ?string $site = null;
+
+    public ?string $repositoryUrl = null;
+
     public $description;
 
     public $fileUpload;
@@ -27,6 +31,8 @@ class AdminDashboard extends Component
 
     protected $rules = [
         'name' => 'required',
+        'site' => 'nullable|url:http,https|max:2048',
+        'repositoryUrl' => 'nullable|url:http,https|max:2048',
         'description' => 'required',
         'techStack' => 'required',
         'otherTech' => 'nullable|string|max:255',
@@ -65,6 +71,8 @@ class AdminDashboard extends Component
 
         $project = Project::create([
             'name' => $this->name,
+            'site' => filled($this->site) ? $this->site : null,
+            'repository_url' => filled($this->repositoryUrl) ? $this->repositoryUrl : null,
             'description' => $this->description,
             'tech_stack' => $this->techStack,
             'other_tech' => $this->otherTech,

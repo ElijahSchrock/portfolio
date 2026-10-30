@@ -77,6 +77,8 @@ return [
     ],
     [
         'key' => 'neo-runner',
+        'repository_url' => 'https://github.com/ElijahSchrock/Neo-Runner',
+        'site' => 'https://neorunner.elijahschrock.com',
         'name' => 'Neo Runner',
         'description' => 'A browser-based endless runner built with JavaScript and HTML. Neo Runner explores game development on the web, bringing an arcade-style concept to life with familiar browser technologies.',
         'tech_stack' => 'JavaScript, HTML',

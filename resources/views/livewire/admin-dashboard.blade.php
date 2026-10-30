@@ -18,6 +18,18 @@
                             </div>
         
                             <div class="col-span-full">
+                                <x-input.group for="site" label="Site (optional)" error="site">
+                                    <x-input.text wire:model="site" id="site" placeholder="https://example.com" />
+                                    <p class="mt-1 text-sm text-gray-400">Include https://. Leave blank to hide the live site button.</p>
+                                </x-input.group>
+                            </div>
+                            <div class="col-span-full">
+                                <x-input.group for="repository_url" label="Repository URL (optional)" error="repositoryUrl">
+                                    <x-input.text wire:model="repositoryUrl" id="repository_url" placeholder="https://github.com/you/project" />
+                                    <p class="mt-1 text-sm text-gray-400">Leave blank to hide the source link.</p>
+                                </x-input.group>
+                            </div>
+                            <div class="col-span-full">
                                 <x-input.group for="description" label="Description" error="description">
                                     <x-input.textarea wire:model="description" id="description" rows="3" placeholder="Enter Project Description"/>
                                 </x-input.group>

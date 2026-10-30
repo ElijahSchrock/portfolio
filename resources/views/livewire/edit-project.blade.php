@@ -5,6 +5,14 @@
             <x-input.group for="project_name" label="Name" error="project.name">
                 <x-input.text wire:model="project.name" id="project_name" placeholder="" />
             </x-input.group>
+            <x-input.group for="project_site" label="Site (optional)" error="project.site">
+                <x-input.text wire:model="project.site" id="project_site" placeholder="https://example.com" />
+                <p class="mt-1 text-sm text-gray-400">Include https://. Leave blank to hide the live site button.</p>
+            </x-input.group>
+            <x-input.group for="project_repository_url" label="Repository URL (optional)" error="project.repository_url">
+                <x-input.text wire:model="project.repository_url" id="project_repository_url" placeholder="https://github.com/you/project" />
+                <p class="mt-1 text-sm text-gray-400">Leave blank to hide the source link.</p>
+            </x-input.group>
             <x-input.group for="project_description" label="Description" error="project.description">
                 <x-input.text wire:model="project.description" id="project_description" placeholder="" />
             </x-input.group>
@@ -23,7 +31,7 @@
                 <x-input.checkbox wire:model="project.showing" id="project_showing" for="project_showing" boxLabel="Show this project?" />
                 <x-toolbar.flex />
                 <x-button type="button" class="bg-gray-700 hover:bg-gray-600" wire:click="closeModal()">Close</x-button>
-                <x-button type="submit" class="bg-blue-800 hover:bg-blue-600">save</x-button>
+                <x-button type="submit" class="bg-blue-800 hover:bg-blue-600">Save</x-button>
             </x-toolbar>
         </x-slot>
     </x-modal.livewire-ui>

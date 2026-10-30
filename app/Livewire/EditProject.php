@@ -14,6 +14,8 @@ class EditProject extends ModalComponent
 
     protected $rules = [
         'project.name' => 'required',
+        'project.site' => 'nullable|url:http,https|max:2048',
+        'project.repository_url' => 'nullable|url:http,https|max:2048',
         'project.description' => 'required',
         'project.showing' => 'boolean',
         'project.tech_stack' => 'required',
@@ -23,6 +25,8 @@ class EditProject extends ModalComponent
 
     protected $validationAttributes = [
         'project.name' => 'name',
+        'project.site' => 'site',
+        'project.repository_url' => 'repository URL',
         'project.description' => 'description',
         'project.tech_stack' => 'tech stack',
         'project.other_tech' => 'other tech',
@@ -45,6 +49,8 @@ class EditProject extends ModalComponent
 
         $this->project->update([
             'name' => $this->project->name,
+            'site' => filled($this->project->site) ? $this->project->site : null,
+            'repository_url' => filled($this->project->repository_url) ? $this->project->repository_url : null,
             'description' => $this->project->description,
             'showing' => $this->project->showing,
             'tech_stack' => $this->project->tech_stack,

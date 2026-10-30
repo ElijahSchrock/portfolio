@@ -19,6 +19,8 @@ class PortfolioSeeder extends Seeder
         Validator::make(['projects' => $projects], [
             'projects' => ['array'],
             'projects.*.key' => ['required', 'string', 'alpha_dash:ascii', 'max:100', 'distinct:strict'],
+            'projects.*.repository_url' => ['nullable', 'url:http,https', 'max:2048'],
+            'projects.*.site' => ['nullable', 'url:http,https', 'max:2048'],
             'projects.*.name' => ['required', 'string', 'max:255'],
             'projects.*.description' => ['required', 'string'],
             'projects.*.tech_stack' => ['required', 'string', 'max:255'],
@@ -59,6 +61,8 @@ class PortfolioSeeder extends Seeder
         foreach ($projects as $entry) {
             $project = Project::firstOrCreate(['seed_key' => $entry['key']], [
                 'name' => $entry['name'],
+                'site' => $entry['site'] ?? null,
+                'repository_url' => $entry['repository_url'] ?? null,
                 'description' => $entry['description'],
                 'tech_stack' => $entry['tech_stack'],
                 'other_tech' => $entry['other_tech'] ?? null,

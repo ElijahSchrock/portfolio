@@ -47,6 +47,8 @@ class PortfolioTest extends TestCase
 
         Livewire::test(AdminDashboard::class)
             ->set('name', 'Local project')
+            ->set('site', 'https://example.com/play')
+            ->set('repositoryUrl', 'https://github.com/example/project')
             ->set('description', 'Project description')
             ->set('techStack', 'Laravel, Livewire')
             ->set('otherTech', 'SQLite')
@@ -59,6 +61,8 @@ class PortfolioTest extends TestCase
         $media = $project->getFirstMedia('images');
 
         $this->assertSame('Local project', $project->name);
+        $this->assertSame('https://example.com/play', $project->site);
+        $this->assertSame('https://github.com/example/project', $project->repository_url);
         $this->assertSame('public', $media->disk);
         $this->assertTrue($media->hasGeneratedConversion('thumb'));
         Storage::disk('public')->assertExists($media->getPathRelativeToRoot());
@@ -129,6 +133,92 @@ class PortfolioTest extends TestCase
             ->dispatch('openModal', modalComponent: 'project-modal', arguments: ['project' => $project->id])
             ->assertSee('Updated recovered project')
             ->assertDontSee('Other Technologies:');
+    }
+
+    public function test_project_site_can_be_added_changed_and_removed(): void
+    {
+        $this->actingAs(User::factory()->owner()->create());
+        $project = Project::create([
+            'name' => 'Playable project',
+            'description' => 'Project description',
+            'tech_stack' => 'JavaScript',
+        ]);
+
+        Livewire::test('project-modal', ['project' => $project])
+            ->assertDontSee('Visit live site');
+
+        foreach (['https://example.com/play', 'http://example.com/updated', ''] as $site) {
+            Livewire::test(EditProject::class, ['project' => $project->fresh()])
+                ->set('project.site', $site)
+                ->call('save')
+                ->assertHasNoErrors();
+
+            $this->assertSame($site === '' ? null : $site, $project->fresh()->site);
+            $modal = Livewire::test('project-modal', ['project' => $project->fresh()]);
+            if ($site === '') {
+                $modal->assertDontSee('Visit live site');
+            } else {
+                $modal->assertSee('Visit live site')
+                    ->assertSee('href="'.$site.'"', false)
+                    ->assertSee('target="_blank"', false);
+            }
+        }
+    }
+
+    public function test_repository_url_can_be_added_changed_and_removed(): void
+    {
+        $this->actingAs(User::factory()->owner()->create());
+        $project = Project::create([
+            'name' => 'Playable project',
+            'description' => 'Project description',
+            'tech_stack' => 'JavaScript',
+        ]);
+
+        Livewire::test('project-modal', ['project' => $project])
+            ->assertDontSee('View source');
+
+        foreach (['https://example.com/play', 'http://example.com/updated', ''] as $site) {
+            Livewire::test(EditProject::class, ['project' => $project->fresh()])
+                ->set('project.repository_url', $site)
+                ->call('save')
+                ->assertHasNoErrors();
+
+            $this->assertSame($site === '' ? null : $site, $project->fresh()->repository_url);
+            $modal = Livewire::test('project-modal', ['project' => $project->fresh()]);
+            if ($site === '') {
+                $modal->assertDontSee('View source');
+            } else {
+                $modal->assertSee('View source')
+                    ->assertSee('href="'.$site.'"', false)
+                    ->assertSee('target="_blank"', false);
+            }
+        }
+    }
+
+    public function test_admin_rejects_invalid_or_unsafe_site_urls(): void
+    {
+        $this->actingAs(User::factory()->owner()->create());
+        $project = Project::create([
+            'name' => 'Project',
+            'description' => 'Project description',
+            'tech_stack' => 'JavaScript',
+        ]);
+
+        foreach (['javascript:alert(1)', 'ftp://example.com', 'example.com', 'https://example.com/'.str_repeat('a', 2048)] as $site) {
+            Livewire::test(AdminDashboard::class)
+                ->set('site', $site)
+                ->set('repositoryUrl', $site)
+                ->call('save')
+                ->assertHasErrors(['site', 'repositoryUrl']);
+
+            Livewire::test(EditProject::class, ['project' => $project->fresh()])
+                ->set('project.site', $site)
+                ->set('project.repository_url', $site)
+                ->call('save')
+                ->assertHasErrors(['project.site', 'project.repository_url']);
+        }
+
+        $this->assertNull($project->fresh()->site);
     }
 
     public function test_uploaded_resumes_download_from_their_own_storage_disk(): void
