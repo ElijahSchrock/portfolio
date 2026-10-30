@@ -109,7 +109,7 @@
                                         </a>
                                     </div>
                                     <div class="inline-block pr-5 sm:pr-10">
-                                        <a href="https://github.com/elijahschrockAGT" target="_blank">
+                                        <a href="https://github.com/elijahschrock" target="_blank">
                                             <div class="w-48 sm:w-80 overflow-hidden rounded-lg shadow-md dark:bg-black hover:shadow-xl transition-shadow duration-300 ease-in-out">
                                                 <img src="/github.png"/>
                                             </div>
